@@ -26,9 +26,7 @@ class LoadingAdaptive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return UniversalPlatform.isAndroid
-        ? CircularProgressIndicator(
-            color: color,
-          )
+        ? CircularProgressIndicator(color: color)
         : CupertinoActivityIndicator(
             color: color,
           );
@@ -37,17 +35,22 @@ class LoadingAdaptive extends StatelessWidget {
 
 class LoadingWidgetColor extends StatelessWidget {
   final Color? color;
+  final double? strokeWidth;
 
   const LoadingWidgetColor({
     Key? key,
     this.color,
+    this.strokeWidth,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: UniversalPlatform.isAndroid
-          ? CircularProgressIndicator(color: color)
+          ? CircularProgressIndicator(
+              color: color,
+              strokeWidth: strokeWidth,
+            )
           : CupertinoActivityIndicator(color: color),
     );
   }
